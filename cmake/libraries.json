@@ -1,0 +1,21 @@
+{
+
+"libsc": {
+  "url": "https://github.com/cburstedde/libsc.git",
+  "tag": "prev3-develop"
+},
+"p4est": {
+  "url": "https://github.com/cburstedde/p4est.git",
+  "tag": "prev3-develop"
+},
+"forestclaw": {
+  "url": "https://github.com/forestclaw/forestclaw.git",
+  "tag": "develop"
+},
+
+"zlib": {
+  "url" : "https://github.com/zlib-ng/zlib-ng.git",
+  "tag": "2.0.6"
+}
+
+}
