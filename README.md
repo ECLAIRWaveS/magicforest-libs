@@ -8,3 +8,5 @@ cmake --build build
 ```
 
 "~/lib_magic" is an arbitrary location to install all the MagicForest external libraries.
+
+See [libraries.json](./cmake/libraries.json) for what versions/tags/branches are installed of each library.

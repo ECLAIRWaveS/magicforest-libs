@@ -10,13 +10,10 @@ project(MagicForestLibs LANGUAGES C CXX Fortran)
 include(cmake/options.cmake)
 include(cmake/compilers.cmake)
 
-# --- main program
-
-# NOTE: lists must be passed via CMAKE_CACHE_ARGS using -Dvar:STRING=${var}
-# the variable type must be included e.g. STRING
-
 # template function
 include(cmake/ExtProj.cmake)
+
+# --- main program
 
 find_package(MPI COMPONENTS C CXX Fortran REQUIRED)
 
@@ -29,6 +26,8 @@ set(zlib_cmake_args
 # CMAKE_POSITION_INDEPENDENT_CODE=on is needed for Zlib even when using static libs.
 
 extproj(zlib git "${zlib_cmake_args}" "")
+
+# --- AMR libs
 
 set(amr_args
 -Dmpi:BOOL=true
