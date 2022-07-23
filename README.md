@@ -1,4 +1,4 @@
-# MagicForest external libraries installer
+# MAGIC Forest External Libraries Installer
 
 Install all prerequisite libraries for MagicForest.
 
