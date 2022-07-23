@@ -38,5 +38,5 @@ endif()
 
 extproj(libsc git "${amr_args}" "zlib")
 extproj(p4est git "${amr_args}" "libsc")
-set(fclaw_args ${amr_args} -Dclawpatch:BOOL=true -Dclawpack:BOOL=true)
+set(fclaw_args ${amr_args} -Dclawpatch:BOOL=true -Dclawpack:BOOL=true -Dapplications:BOOL=false)
 extproj(forestclaw git "${fclaw_args}" "p4est")
