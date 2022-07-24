@@ -41,9 +41,6 @@ if(DEFINED ENV{CONDA_PREFIX})
   list(APPEND CMAKE_IGNORE_PATH ${ignore_path})
 endif()
 
-# --- CMake Module search path (for Find*.cmake)
-cmake_path(SET CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/Modules)
-
 # --- look in CMAKE_PREFIX_PATH for Find*.cmake as well
 if(NOT DEFINED CMAKE_PREFIX_PATH AND DEFINED ENV{CMAKE_MODULE_PATH})
   set(CMAKE_PREFIX_PATH $ENV{CMAKE_MODULE_PATH})
@@ -61,7 +58,7 @@ if(NOT EXISTS ${PROJECT_BINARY_DIR}/.gitignore)
 endif()
 
 # --- check for updated external projects when "false"
-set_directory_properties(PROPERTIES EP_UPDATE_DISCONNECTED false)
+set_property(DIRECTORY PROPERTY EP_UPDATE_DISCONNECTED false)
 
 # --- read JSON with URLs for each library
 file(READ ${CMAKE_CURRENT_LIST_DIR}/libraries.json json_meta)
