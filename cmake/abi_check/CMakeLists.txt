@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13...3.24)
+cmake_minimum_required(VERSION 3.1...3.25)
 project(abi_check LANGUAGES C CXX Fortran)
 
 enable_testing()
@@ -6,11 +6,8 @@ enable_testing()
 add_library(addone OBJECT addone.c)
 add_library(addtwo OBJECT addtwo.cpp)
 add_executable(main_f main.f90 $<TARGET_OBJECTS:addone> $<TARGET_OBJECTS:addtwo>)
-if(CMAKE_Fortran_COMPILER_ID MATCHES "^Intel")
-  set_property(TARGET main_f PROPERTY LINKER_LANGUAGE Fortran)
-else()
-  set_property(TARGET main_f PROPERTY LINKER_LANGUAGE CXX)
-endif()
+set_property(TARGET main_f PROPERTY LINKER_LANGUAGE Fortran)
+
 add_test(NAME Fortran_main COMMAND main_f)
 
 add_library(addone_f OBJECT addone.f90)

@@ -1,11 +1,14 @@
-cmake_minimum_required(VERSION 3.20...3.24)
+cmake_minimum_required(VERSION 3.13...3.25)
 
 if(NOT CMAKE_BUILD_TYPE)
   # ignore ENV{CMAKE_BUILD_TYPE} as we want to directly capture this project's user intent
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Release default")
 endif()
 
-project(MagicForestLibs LANGUAGES C CXX Fortran)
+project(MagicForestLibs
+LANGUAGES C CXX Fortran
+VERSION 1.0.0
+)
 
 include(cmake/options.cmake)
 include(cmake/compilers.cmake)
