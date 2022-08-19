@@ -18,8 +18,6 @@ include(cmake/ExtProj.cmake)
 
 # --- main program
 
-find_package(MPI COMPONENTS C CXX Fortran REQUIRED)
-
 # --- Zlib
 set(zlib_cmake_args
 -DZLIB_COMPAT:BOOL=on

@@ -26,13 +26,6 @@ if(is_multi_config OR CMAKE_GENERATOR MATCHES "Visual Studio")
   ")
 endif()
 
-# --- user must specify where to install libraries
-
-if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-  message(FATAL_ERROR "Please define an install location like
-  cmake -B build -DCMAKE_INSTALL_PREFIX=~/lib_magic")
-endif()
-
 # --- exclude Conda from search
 if(DEFINED ENV{CONDA_PREFIX})
   set(ignore_path
