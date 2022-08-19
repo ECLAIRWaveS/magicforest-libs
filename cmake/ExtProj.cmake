@@ -25,7 +25,30 @@ else()
   string(JSON url GET ${json_meta} ${name} url)
 endif()
 
-if(url_type STREQUAL "git")
+if(local)
+  # archive file on this computer or network drive
+
+  find_file(${name}_archive
+  NAMES ${name}.tar.bz2 ${name}.tar.gz ${name}.tar ${name}.zip ${name}.zstd ${name}.tar.xz
+  HINTS ${local}
+  NO_DEFAULT_PATH
+  )
+
+  if(NOT ${name}_archive)
+    message(FATAL_ERROR "Archive file for ${name} does not exist under ${local}")
+  endif()
+
+  message(STATUS "${name}: using source archive ${${name}_archive}")
+
+  ExternalProject_Add(${name}
+  URL ${${name}_archive}
+  CMAKE_ARGS ${cmake_args}
+  CONFIGURE_HANDLED_BY_BUILD true
+  TEST_COMMAND ""
+  DEPENDS ${depends}
+  )
+
+elseif(url_type STREQUAL "git")
 
   if(CMAKE_VERSION VERSION_LESS 3.19)
     set(tag ${meta.${name}.tag})
@@ -61,7 +84,7 @@ elseif(url_type STREQUAL "archive")
   DEPENDS ${depends}
   )
 else()
-  message(FATAL_ERROR "unsure how to use resource of type ${url_type")
+  message(FATAL_ERROR "unsure how to use resource of type ${url_type}")
 endif()
 
 endfunction(extproj)
