@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13...3.25)
+cmake_minimum_required(VERSION 3.13...3.26)
 
 if(NOT CMAKE_BUILD_TYPE)
   # ignore ENV{CMAKE_BUILD_TYPE} as we want to directly capture this project's user intent
@@ -10,11 +10,14 @@ LANGUAGES C CXX Fortran
 VERSION 1.0.0
 )
 
-include(cmake/options.cmake)
+include(options.cmake)
 include(cmake/compilers.cmake)
 
-# template function
+# --- template function
 include(cmake/ExtProj.cmake)
+
+# --- read JSON with URLs for each library
+file(READ ${CMAKE_CURRENT_LIST_DIR}/cmake/libraries.json json_meta)
 
 # --- main program
 
